@@ -4,8 +4,6 @@ settings:
   conductor:
     base: alpine:3.5
 
-  project_name: timestamp
-
 services:
   django:
     from: alpine:3.5
@@ -14,6 +12,8 @@ services:
     dev_overrides:
       ports:
         - "8000:8000"
+      volumes:
+        - /home/robot/Education/django/polls/mysite:/django
       command: ["python3", "/django/manage.py", "runserver", "0.0.0.0:8000"]
 
   nginx:

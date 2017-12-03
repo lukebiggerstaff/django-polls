@@ -13,7 +13,7 @@
 
 # copy django files to container
 - name: copy local install into container
-  copy: "src=/src/{{ LOCAL_PROJ_DIR }}/ dest=/django/"
+  copy: src=/src/mysite/ dest=/django/
 
 # pip install requirements
 - name: pip install requirements.txt
