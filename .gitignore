@@ -1,0 +1,11 @@
+pyenv
+*.py[cod]
+__pycache__/*
+db.sqlite3
+*.swp
+tags
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
