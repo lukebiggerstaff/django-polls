@@ -9,6 +9,9 @@ services:
     from: alpine:3.5
     roles:
       - django
+    ports:
+      - "8000:8000"
+    command: ["gunicorn", "--chdir /django/mysite", "wsgi"]
     dev_overrides:
       ports:
         - "8000:8000"
@@ -18,6 +21,7 @@ services:
 
   nginx:
     from: nginx:1.13.7-alpine
+    command: ["/bin/false"]
     dev_overrides:
       command: ["/bin/false"]
 
