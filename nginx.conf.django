@@ -1,0 +1,16 @@
+user nginx;
+error_log stdout;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+
+    server {
+        location / {
+            proxy_pass http://django:8000;
+        }
+    }
+
+}
