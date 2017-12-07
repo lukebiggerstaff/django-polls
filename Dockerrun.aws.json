@@ -1,0 +1,33 @@
+{
+    "containerDefinitions": [
+        {
+            "command": [
+                "gunicorn",
+                "-b 0.0.0.0:8000",
+                "--capture-output",
+                "mysite.wsgi"
+            ],
+            "essential": true,
+            "image": "lbigg/polls-django",
+            "name": "django",
+            "portMappings": [
+                {
+                    "containerPort": 8000
+                }
+            ]
+        },
+        {
+            "essential": true,
+            "image": "lbigg/polls-nginx",
+            "name": "nginx",
+            "portMappings": [
+                {
+                    "containerPort": 80,
+                    "hostPort": 80
+                }
+            ]
+        }
+    ],
+    "family": "",
+    "volumes": []
+}
