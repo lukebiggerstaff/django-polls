@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  nginx:
+    image: lbigg/polls-nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - django
+  django:
+    image: lbigg/polls-django
+    command: ["gunicorn", "-b 0.0.0.0:8000", "--capture-output",  "mysite.wsgi"]
+    ports:
+      - "8000"
