@@ -12,3 +12,5 @@ services:
     command: ["gunicorn", "-b 0.0.0.0:8000", "--capture-output",  "mysite.wsgi"]
     ports:
       - "8000"
+    volumes:
+      - ./mysite:/django
