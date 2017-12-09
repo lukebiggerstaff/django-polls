@@ -1,0 +1,36 @@
+---
+language: python
+
+sudo: required
+
+services:
+  - docker
+
+python:
+  - "3.5"
+
+before_install:
+  - docker build -t lbigg/polls-django -f ./Dockerfile.django .
+  - docker build -t lbigg/polls-nginx -f ./Dockerfile.nginx .
+  - docker-compose up
+  - docker ps -a
+  - docker run lbigg/ci-travis /bin/sh -c "cd /django; python3 mange.py test"
+
+script:
+  - python3 test.py
+
+after_success:
+  if [ "$TRAVIS_BRANCH" == "master" ]; then
+  docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
+  docker push lbigg/polls-django;
+  docker push lbigg/polls-nginx;
+  fi
+
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $ACCESS_KEY
+  secret_access_key:
+    secure: $SECRET_ACCESS_KEY
+  region: "us-west-2"
+  app: "polls"
+  env: "polls-dev1"
