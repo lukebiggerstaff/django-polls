@@ -12,9 +12,9 @@ python:
 before_install:
   - docker build -t lbigg/polls-django -f ./Dockerfile.django .
   - docker build -t lbigg/polls-nginx -f ./Dockerfile.nginx .
-  - docker-compose up
+  - docker-compose up -d
   - docker ps -a
-  - docker run lbigg/ci-travis /bin/sh -c "cd /django; python3 mange.py test"
+  - docker run lbigg/ci-travis /bin/sh -c "cd /django; python3 manage.py test"
 
 script:
   - python3 test.py
