@@ -33,4 +33,4 @@ deploy:
   region: "us-west-2"
   app: "polls"
   env: "polls-dev1"
-  bucket: "elasticbeanstalk-us-west-2-767771962184"
+  bucket: "arn:aws:s3:::elasticbeanstalk-us-west-2-767771962184"
