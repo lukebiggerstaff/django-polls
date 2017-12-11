@@ -32,6 +32,6 @@ deploy:
   secret_access_key:
     secure: $SECRET_ACCESS_KEY
   region: "us-west-2"
-  bucket: "arn:aws:s3:::elasticbeanstalk-us-west-2-767771962184"
+  bucket_name: "arn:aws:s3:::elasticbeanstalk-us-west-2-767771962184"
   app: "polls"
   env: "polls-dev1"
