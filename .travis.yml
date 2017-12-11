@@ -26,11 +26,12 @@ after_success:
   fi
 
 deploy:
+  skip_cleanup: true
   provider: elasticbeanstalk
   access_key_id: $ACCESS_KEY
   secret_access_key:
     secure: $SECRET_ACCESS_KEY
   region: "us-west-2"
+  bucket: "arn:aws:s3:::elasticbeanstalk-us-west-2-767771962184"
   app: "polls"
   env: "polls-dev1"
-  bucket: "arn:aws:s3:::elasticbeanstalk-us-west-2-767771962184"
