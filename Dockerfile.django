@@ -1,5 +1,5 @@
 FROM python:3.6-alpine
-RUN mkdir /django 
+RUN mkdir -p /django/static
 WORKDIR /django
 COPY ./mysite .
 RUN pip3 install -r requirements.txt
